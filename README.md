@@ -18,6 +18,87 @@ Key features:
 
 ## Architecture
 
+```
+ecommerce/
+│
+├── order/
+│   ├── src/main/java/com/ecommerce/order/
+│   │   ├── controller/
+│   │   ├── service/
+│   │   ├── repository/
+│   │   ├── model/
+│   │   ├── dto/
+│   │   ├── mapper/
+│   │   └── config/
+│   ├── src/main/resources/
+│   │   ├── application.yml
+│   │   ├── data.sql
+│   │   └── schema.sql
+│   ├── src/test/java/com/ecommerce/order/
+│   │   ├── unit/
+│   │   └── integration/
+│   ├── Dockerfile
+│   └── pom.xml
+│
+├── analytics/
+│   ├── src/main/java/com/ecommerce/analytics/
+│   │   ├── controller/
+│   │   ├── service/
+│   │   ├── repository/
+│   │   ├── model/
+│   │   └── config/
+│   ├── src/main/resources/
+│   │   ├── application.yml
+│   ├── src/test/java/com/ecommerce/analytics/
+│   │   ├── unit/
+│   │   └── integration/
+│   ├── Dockerfile
+│   └── pom.xml
+│
+├── event/
+│   ├── src/main/java/com/ecommerce/event/
+│   │   ├── controller/
+│   │   ├── service/
+│   │   ├── repository/
+│   │   ├── model/
+│   │   └── config/
+│   ├── src/main/resources/
+│   │   ├── application.yml
+│   ├── src/test/java/com/ecommerce/event/
+│   │   ├── unit/
+│   │   └── integration/
+│   ├── Dockerfile
+│   └── pom.xml
+│
+├── notification/
+│   ├── src/main/java/com/ecommerce/notification/
+│   │   ├── controller/
+│   │   ├── service/
+│   │   ├── repository/
+│   │   ├── model/
+│   │   └── config/
+│   ├── src/main/resources/
+│   │   ├── application.yml
+│   ├── src/test/java/com/ecommerce/notification/
+│   │   ├── unit/
+│   │   └── integration/
+│   ├── Dockerfile
+│   └── pom.xml
+│
+├── gateway/
+│   ├── src/main/java/com/ecommerce/gateway/
+│   │   ├── GatewayApplication.java
+│   ├── src/main/resources/
+│   │   ├── application.yml
+│   ├── src/test/java/com/ecommerce/gateway/
+│   ├── Dockerfile
+│   └── pom.xml
+│
+├── docker-compose.yml
+├── pom.xml
+└── README.md
+```
+
 * **Order Service:** Handles order CRUD operations, publishes events to Kafka.
 * **Event Service:** Consumes `order-events`, persists them in PostgreSQL, publishes `order-processed-events`.
 * **Notification Service:** Consumes `order-processed-events` and sends notifications. Includes retry logic for failed notifications.
